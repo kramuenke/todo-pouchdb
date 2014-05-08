@@ -1,0 +1,15 @@
+{
+  "name": "todo-pouchdb",
+  "version": "0.1.0",
+  "homepage": "https://github.com/kramuenke/todo-pouchdb",
+  "authors": [
+    "Kai Ramuenke <kai.ramuenke@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+
+  "dependencies": {
+    "pouchdb": "2.2.0",
+    "react": "0.10.0"
+  }
+}
