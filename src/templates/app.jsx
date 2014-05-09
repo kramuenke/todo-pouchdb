@@ -39,10 +39,20 @@
       return { todos: [] };
     },
 
+    componentDidMount: function() {
+      pouch.allDocs({ include_docs: true, descending: true}, function(err, doc) {
+        this.setState( {
+          todos: _.map(doc.rows, function(row) { return row.doc; })
+        });
+      }.bind(this));
+    },
+
     newTodo: function(todo) {
-      this.state.todos.push( {
-        title: todo}
-      );
+      var newTodo = {
+        title: todo
+      }
+      this.state.todos.push( newTodo );
+      pouch.post(newTodo);
       this.setState({
         todos: this.state.todos
       });
