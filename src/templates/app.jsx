@@ -4,6 +4,8 @@
 
   var ENTER_KEY = 13
 
+  var pouch = new PouchDB('todos');
+
   var NewTodo = React.createClass({
     newTodoCreated: function(event) {
       if(event.which !== ENTER_KEY) {
@@ -26,7 +28,7 @@
     render: function() {
       var todos = [];
       this.props.todos.forEach(function(todo) {
-        todos.push(<li>{todo}</li>);
+        todos.push(<li>{todo.title}</li>);
       });
       return (<ul>{todos}</ul>);
     }
@@ -38,7 +40,9 @@
     },
 
     newTodo: function(todo) {
-      this.state.todos.push(todo);
+      this.state.todos.push( {
+        title: todo}
+      );
       this.setState({
         todos: this.state.todos
       });
